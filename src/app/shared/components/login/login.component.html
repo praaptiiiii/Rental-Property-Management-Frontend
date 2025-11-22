@@ -1,28 +1,5 @@
-<div class="login-page">
+<!-- <div class="login-page">
   <div class="login-container">
-
-    <div class="login-hero">
-      <div class="hero-content">
-        <div class="hero-icon">🔑</div>
-        <h2>Manage Your Properties</h2>
-        <p>Access your dashboard to manage tenants, payments, and properties all in one place.</p>
-        <div class="hero-features">
-          <div class="feature">
-            <span class="feature-icon">🏠</span>
-            <span>Property Management</span>
-          </div>
-          <div class="feature">
-            <span class="feature-icon">💰</span>
-            <span>Payment Tracking</span>
-          </div>
-          <div class="feature">
-            <span class="feature-icon">👥</span>
-            <span>Tenant Management</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="login-card">
       <div class="login-header">
         <div class="logo">
@@ -31,6 +8,25 @@
         </div>
         <h1>Welcome Back</h1>
         <p>Sign in to your account to continue</p>
+      </div>
+
+      <div class="role-selection">
+        <h3>I want to login as:</h3>
+        <div class="role-options">
+          <div 
+            *ngFor="let role of roles" 
+            class="role-option"
+            [class.selected]="selectedRole === role.value"
+            (click)="onRoleChange(role.value)"
+          >
+            <div class="role-icon">{{ role.value === 'owner' ? '👑' : '👤' }}</div>
+            <div class="role-info">
+              <div class="role-label">{{ role.label }}</div>
+              <div class="role-description">{{ role.description }}</div>
+            </div>
+            <div class="role-check">✓</div>
+          </div>
+        </div>
       </div>
 
       <form class="login-form" (ngSubmit)="login()">
@@ -88,6 +84,198 @@
         <div class="demo-info">
           <span>Email: any&#64;email.com</span>
           <span>Password: any password</span>
+          <span>Role: Select any role above</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-hero">
+      <div class="hero-content">
+        <div class="hero-icon">🔑</div>
+        <h2>Manage Your Properties</h2>
+        <p>Access your dashboard to manage tenants, payments, and properties all in one place.</p>
+        <div class="hero-features">
+          <div class="feature">
+            <span class="feature-icon">🏠</span>
+            <span>Property Management</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">💰</span>
+            <span>Payment Tracking</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">👥</span>
+            <span>Tenant Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="login-page">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo">
+          <span class="logo-icon">🏠</span>
+          <span class="logo-text">RentalManager</span>
+        </div>
+        <h1>Welcome to RentalManager</h1>
+        <p>Your complete property management solution</p>
+      </div>
+
+      <form class="login-form" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="email" 
+            name="email"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="input-icon">📧</span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password"
+            placeholder="Enter your password"
+            required
+          >
+          <span class="input-icon">🔒</span>
+        </div>
+
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            Remember me
+          </label>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn" [disabled]="!email || !password">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-icon">→</span>
+        </button>
+
+        <div *ngIf="errorMessage" class="error-message">
+          ⚠️ {{ errorMessage }}
+        </div>
+      </form>
+
+      <div class="login-footer">
+        <p>Don't have an account? <a routerLink="/signup" class="signup-link">Sign up</a></p>
+      </div>
+
+      <div class="demo-credentials">
+        <div class="demo-header">Demo Credentials:</div>
+        <div class="demo-info">
+          <span>Email: any&#64;email.com</span>
+          <span>Password: any password</span>
+          <span>Select your role on the right →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-hero">
+      <div class="hero-content">
+        <!-- Role Selection Moved Here -->
+        <div class="role-selection">
+          <h2>Choose Your Role</h2>
+          <p>Select how you want to use RentalManager</p>
+          
+          <div class="role-options">
+            <div 
+              *ngFor="let role of roles" 
+              class="role-option"
+              [class.selected]="selectedRole === role.value"
+              (click)="onRoleChange(role.value)"
+            >
+              <div class="role-icon">{{ role.value === 'owner' ? '👑' : '👤' }}</div>
+              <div class="role-info">
+                <div class="role-label">{{ role.label }}</div>
+                <div class="role-description">{{ role.description }}</div>
+              </div>
+              <div class="role-check">✓</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Content Based on Selected Role -->
+        <div class="role-features" *ngIf="selectedRole === 'customer'">
+          <h3>For Renters</h3>
+          <div class="feature-list">
+            <div class="feature">
+              <span class="feature-icon">🔍</span>
+              <div class="feature-text">
+                <strong>Find Perfect Homes</strong>
+                <span>Browse thousands of verified properties</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💬</span>
+              <div class="feature-text">
+                <strong>Direct Communication</strong>
+                <span>Connect directly with property owners</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📱</span>
+              <div class="feature-text">
+                <strong>Easy Payments</strong>
+                <span>Secure online rent payments</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📄</span>
+              <div class="feature-text">
+                <strong>Digital Documents</strong>
+                <span>Access receipts and agreements anytime</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="role-features" *ngIf="selectedRole === 'owner'">
+          <h3>For Property Owners</h3>
+          <div class="feature-list">
+            <div class="feature">
+              <span class="feature-icon">🏠</span>
+              <div class="feature-text">
+                <strong>Property Management</strong>
+                <span>Manage all your properties in one place</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💰</span>
+              <div class="feature-text">
+                <strong>Revenue Tracking</strong>
+                <span>Monitor payments and generate reports</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">👥</span>
+              <div class="feature-text">
+                <strong>Tenant Management</strong>
+                <span>Handle tenant communications and records</span>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📊</span>
+              <div class="feature-text">
+                <strong>Business Insights</strong>
+                <span>Get analytics on your rental business</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -404,3 +404,240 @@
     font-size: 1.75rem;
   }
 }
+
+/* Updated Role Selection Styles for Hero Section */
+.role-selection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.role-selection h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.role-selection > p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.role-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.role-option {
+  flex: 1;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.role-option:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.role-option.selected {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.role-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.role-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.role-description {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.role-check {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.role-option.selected .role-check {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #7B1FA2;
+}
+
+/* Role Features Section */
+.role-features {
+  text-align: left;
+}
+
+.role-features h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.feature-text strong {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.feature-text span {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* Updated Hero Section */
+.hero-content {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Updated Demo Credentials */
+.demo-credentials {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(123, 31, 162, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(123, 31, 162, 0.1);
+  text-align: center;
+}
+
+:host-context(.dark-theme) .demo-credentials {
+  background: rgba(186, 104, 200, 0.1);
+  border-color: rgba(186, 104, 200, 0.2);
+}
+
+.demo-header {
+  font-weight: 600;
+  color: #7B1FA2;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+:host-context(.dark-theme) .demo-header {
+  color: #BA68C8;
+}
+
+.demo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  
+  .login-hero {
+    display: none;
+  }
+  
+  .login-card {
+    padding: 2rem;
+  }
+  
+  .role-options {
+    flex-direction: column;
+  }
+  
+  .demo-info span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+  
+  .login-header h1 {
+    font-size: 1.75rem;
+  }
+}
