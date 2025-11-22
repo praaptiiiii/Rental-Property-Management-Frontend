@@ -1,0 +1,176 @@
+:host {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 130px;
+  left: 20px;
+  width: 200px;
+  height: calc(100vh - 270px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  color: #333333;
+  border-radius: 16px;
+  padding: 0; /* Remove padding since we'll handle spacing differently */
+  overflow-y: auto;
+  z-index: 999;
+  box-shadow: 
+    0 8px 32px rgba(123, 31, 162, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  margin: 10px;
+  border: 1px solid rgba(224, 224, 224, 0.5);
+  
+  /* Add flexbox for perfect centering */
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+/* Dark theme sidebar */
+:host-context(.dark-theme) .sidebar {
+  background: rgba(47, 52, 63, 0.85);
+  color: #E5E5E5;
+  border: 1px solid rgba(58, 63, 74, 0.5);
+  box-shadow: 
+    0 8px 32px rgba(186, 104, 200, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle hover effect on entire sidebar */
+.sidebar:hover {
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateX(5px);
+  box-shadow: 
+    0 12px 40px rgba(123, 31, 162, 0.12),
+    0 0 0 1px rgba(123, 31, 162, 0.1);
+}
+
+:host-context(.dark-theme) .sidebar:hover {
+  background: rgba(47, 52, 63, 0.92);
+  box-shadow: 
+    0 12px 40px rgba(186, 104, 200, 0.15),
+    0 0 0 1px rgba(186, 104, 200, 0.1);
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+:host-context(.dark-theme) .sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(123, 31, 162, 0.3);
+  border-radius: 3px;
+}
+
+:host-context(.dark-theme) .sidebar::-webkit-scrollbar-thumb {
+  background: rgba(186, 104, 200, 0.4);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(123, 31, 162, 0.5);
+}
+
+:host-context(.dark-theme) .sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(186, 104, 200, 0.6);
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Take full width of sidebar */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Consistent spacing between items */
+}
+
+.sidebar-menu li {
+  margin: 0 1rem; /* Only horizontal margins */
+}
+
+.sidebar-menu li a {
+  color: #666666;
+  text-decoration: none;
+  padding: 14px 16px; /* Slightly more padding for better touch */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+:host-context(.dark-theme) .sidebar-menu li a {
+  color: #B0B0B0;
+}
+
+.sidebar-menu li a::before {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+  background: rgba(123, 31, 162, 0.08);
+  color: #7B1FA2;
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(123, 31, 162, 0.15);
+}
+
+:host-context(.dark-theme) .sidebar-menu li a:hover {
+  background: rgba(186, 104, 200, 0.1);
+  color: #CE93D8;
+  box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);
+}
+
+.sidebar-menu li a:hover::before {
+  transform: scale(1.1);
+}
+
+.sidebar-menu li a.active {
+  background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+  color: white;
+  box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+}
+
+:host-context(.dark-theme) .sidebar-menu li a.active {
+  background: linear-gradient(135deg, #BA68C8, #CE93D8);
+  box-shadow: 0 4px 15px rgba(186, 104, 200, 0.4);
+}
+
+.sidebar-menu li a.active::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Menu item icons */
+.sidebar-menu li a[routerLink="/properties"]::before { content: "🏠"; }
+.sidebar-menu li a[routerLink="/owners"]::before { content: "👑"; }
+.sidebar-menu li a[routerLink="/tenants"]::before { content: "👥"; }
+.sidebar-menu li a[routerLink="/payments"]::before { content: "💰"; }
+.sidebar-menu li a[routerLink="/inquiries"]::before { content: "📧"; }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    height: calc(100vh - 120px);
+  }
+}

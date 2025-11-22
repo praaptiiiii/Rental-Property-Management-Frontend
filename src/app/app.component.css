@@ -1,0 +1,45 @@
+.app-container {
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.main-content {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 70px; /* Height of navbar */
+}
+
+.content-area {
+  flex: 1;
+  margin-left: 280px; /* Sidebar width (240px) + sidebar margin (20px) + extra spacing (20px) */
+  padding: 2rem;
+  min-height: calc(100vh - 70px);
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+/* Make sure router outlet content is properly spaced */
+.content-area > * {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .content-area {
+    margin-left: 260px; /* Slightly smaller margin on tablets */
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .content-area {
+    margin-left: 0;
+    margin-top: 20px; /* Add space when sidebar is above */
+    padding: 1rem;
+  }
+}

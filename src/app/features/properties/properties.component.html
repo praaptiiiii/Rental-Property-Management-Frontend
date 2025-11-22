@@ -1,1 +1,70 @@
-<p>properties works!</p>
+<div class="properties-page">
+  <div class="page-header">
+    <h1>Properties</h1>
+    <p>Manage your rental properties</p>
+  </div>
+
+  <div class="properties-grid">
+    <!-- Skeleton Loaders -->
+    <div *ngIf="isLoading" class="skeleton-grid">
+      <div *ngFor="let item of [1,2,3,4,5,6]" class="property-card skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-line skeleton-title"></div>
+          <div class="skeleton-line skeleton-text"></div>
+          <div class="skeleton-line skeleton-text-short"></div>
+          <div class="skeleton-details">
+            <div class="skeleton-badge"></div>
+            <div class="skeleton-badge"></div>
+            <div class="skeleton-badge"></div>
+          </div>
+          <div class="skeleton-price"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actual Property Cards -->
+    <div *ngIf="!isLoading" class="properties-list">
+      <div *ngFor="let property of properties" class="property-card">
+        <div class="property-image">
+          <img [src]="property.image" [alt]="property.name" />
+          <div class="property-status" [class]="getStatusClass(property.status)">
+            {{ property.status }}
+          </div>
+        </div>
+        
+        <div class="property-content">
+          <h3 class="property-name">{{ property.name }}</h3>
+          <p class="property-location">
+            <span class="location-icon">📍</span>
+            {{ property.location }}
+          </p>
+          
+          <div class="property-details">
+            <div class="detail-item">
+              <span class="detail-icon">🛏️</span>
+              <span>{{ property.bedrooms }} Bed</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">🚿</span>
+              <span>{{ property.bathrooms }} Bath</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">📐</span>
+              <span>{{ property.area }} sq ft</span>
+            </div>
+          </div>
+          
+          <div class="property-footer">
+            <div class="property-price">
+              ${{ property.rent }}/month
+            </div>
+            <button class="view-details-btn">
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

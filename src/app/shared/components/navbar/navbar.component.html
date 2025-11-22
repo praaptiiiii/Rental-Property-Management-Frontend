@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <a class="navbar-brand" routerLink="/">RentalManager</a>
+  
+  <div class="navbar-search">
+    <input type="text" placeholder="Search properties, tenants..." />
+  </div>
+  
+  <div class="navbar-links">
+    <div class="theme-toggle">
+      <span class="theme-icon">☀️</span>
+      <label class="theme-switch">
+        <input type="checkbox" [checked]="themeService.isDarkTheme()" (change)="toggleTheme()">
+        <span class="slider"></span>
+      </label>
+      <span class="theme-icon">🌙</span>
+    </div>
+    
+    <a class="settings" href="#">Settings</a>
+    <a class="profile" routerLink="/login" routerLinkActive="active">Login</a>
+  </div>
+</nav>

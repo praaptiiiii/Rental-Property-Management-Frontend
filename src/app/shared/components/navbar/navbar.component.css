@@ -1,0 +1,224 @@
+:host {
+  display: block;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #FFFFFF;
+  backdrop-filter: blur(10px);
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 2rem; */
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(123, 31, 162, 0.08);
+  border-bottom: 1px solid #E0E0E0;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme styles */
+:host-context(.dark-theme) .navbar {
+  background: #2F343F;
+  color: #E5E5E5;
+  border-bottom: 1px solid #3A3F4A;
+  box-shadow: 0 2px 15px rgba(186, 104, 200, 0.1);
+}
+
+/* App Logo/Brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7B1FA2;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+  padding-left: 2rem;
+}
+
+.navbar-brand::before {
+  content: "🏠";
+  font-size: 1.8rem;
+}
+
+:host-context(.dark-theme) .navbar-brand {
+  color: #BA68C8;
+}
+
+.navbar-brand:hover {
+  color: #9C27B0;
+}
+
+:host-context(.dark-theme) .navbar-brand:hover {
+  color: #CE93D8;
+}
+
+/* Search bar styling */
+.navbar-search {
+  flex: 0 1 400px;
+  margin: 0 2rem;
+}
+
+.navbar-search input {
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: 1px solid #E0E0E0;
+  width: 100%;
+  background: #F5F5F5;
+  color: #333333;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+:host-context(.dark-theme) .navbar-search input {
+  background: #262A33;
+  border: 1px solid #3A3F4A;
+  color: #E5E5E5;
+}
+
+.navbar-search input::placeholder {
+  color: #666666;
+}
+
+:host-context(.dark-theme) .navbar-search input::placeholder {
+  color: #B0B0B0;
+}
+
+.navbar-search input:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: #7B1FA2;
+  box-shadow: 0 0 0 2px rgba(123, 31, 162, 0.1);
+}
+
+:host-context(.dark-theme) .navbar-search input:focus {
+  background: #2F343F;
+  border-color: #BA68C8;
+  box-shadow: 0 0 0 2px rgba(186, 104, 200, 0.2);
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  color: #666666;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+:host-context(.dark-theme) .navbar-links a {
+  color: #B0B0B0;
+}
+
+.navbar-links a:hover {
+  color: #7B1FA2;
+  background: rgba(123, 31, 162, 0.08);
+  transform: translateY(-1px);
+}
+
+:host-context(.dark-theme) .navbar-links a:hover {
+  color: #CE93D8;
+  background: rgba(206, 147, 216, 0.1);
+}
+
+.navbar-links a::before {
+  font-size: 1.1rem;
+}
+
+.navbar-links a.profile::before {
+  content: "👤";
+}
+
+.navbar-links a.settings::before {
+  content: "⚙️";
+}
+
+/* THEME TOGGLE SWITCH - Violet Theme */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 28px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, #E0E0E0, #BDBDBD);
+  transition: 0.4s;
+  border-radius: 34px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-switch .slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background: #FFFFFF;
+  transition: 0.4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch input:checked + .slider {
+  background: linear-gradient(145deg, #7B1FA2, #9C27B0);
+}
+
+:host-context(.dark-theme) .theme-switch input:checked + .slider {
+  background: linear-gradient(145deg, #BA68C8, #CE93D8);
+}
+
+.theme-switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* Theme icon */
+.theme-icon {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.theme-icon:hover {
+  opacity: 1;
+}
+
+.profile {
+  margin-right: 2rem;
+}
